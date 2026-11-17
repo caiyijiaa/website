@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name – Portfolio</title>
+<meta name="description" content="Your Name: student developer building [what you build].">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ---- Edit these to re-theme the whole site ---- */
+  :root {
+    --bg: #f2f5f7;
+    --surface: #ffffff;
+    --text: #1a2638;
+    --muted: #5b6878;
+    --line: #d5dce3;
+    --accent: #0e8a8c;      /* click your name in the header to cycle through alternates */
+    --accent-ink: #ffffff;
+    --head: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101823; --surface: #172230; --text: #e8edf2;
+      --muted: #9aa8b8; --line: #2a3a4c; --accent: #3cc3c5; --accent-ink: #08202a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 400 1.125rem/1.65 var(--body);
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  header { padding: 1.25rem 0; }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .logo { font: 800 1.15rem var(--head); background: none; border: 0; color: var(--text); cursor: pointer; padding: 0; }
+  .logo span { color: var(--accent); }
+  nav { display: flex; gap: 1.5rem; font: 500 1rem var(--head); }
+  nav a { text-decoration: none; color: var(--muted); }
+  nav a:hover { color: var(--text); }
+
+  .hero { padding: 4.5rem 0 3.5rem; }
+  h1 {
+    font: 800 clamp(2.6rem, 7.5vw, 5rem)/1.02 var(--head);
+    letter-spacing: -0.03em; margin: 0 0 1.5rem; max-width: 14ch;
+  }
+  .hero p { max-width: 38rem; color: var(--muted); margin: 0 0 2rem; }
+  .links { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .btn {
+    font: 700 1rem var(--head); text-decoration: none; padding: .7rem 1.2rem;
+    border: 2px solid var(--text); border-radius: 999px; transition: background .15s, color .15s;
+  }
+  .btn:hover { background: var(--text); color: var(--bg); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn.primary:hover { filter: brightness(1.1); background: var(--accent); color: var(--accent-ink); }
+
+  section { padding: 3rem 0; }
+  h2 { font: 800 clamp(1.7rem, 4vw, 2.3rem)/1.15 var(--head); letter-spacing: -0.02em; margin: 0 0 .5rem; }
+  .sub { color: var(--muted); margin: 0 0 2rem; max-width: 36rem; }
+
+  .projects { display: grid; gap: 1.5rem; }
+  .project {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    display: grid; grid-template-columns: 1fr; overflow: hidden;
+  }
+  .thumb {
+    min-height: 13rem; display: grid; place-items: center; text-align: center; padding: 1rem;
+    background: repeating-linear-gradient(135deg, var(--bg), var(--bg) 12px, var(--line) 12px, var(--line) 13px);
+    color: var(--muted); font: 500 .95rem var(--head);
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .info { padding: 1.5rem; }
+  .info h3 { font: 700 1.5rem/1.2 var(--head); margin: 0 0 .25rem; }
+  .kind { color: var(--accent); font: 700 .95rem var(--head); margin: 0 0 .75rem; }
+  .info p { margin: 0 0 .9rem; }
+  .info dl { margin: 0 0 1rem; display: grid; grid-template-columns: auto 1fr; gap: .25rem 1rem; font-size: 1rem; }
+  .info dt { font: 700 .95rem var(--head); color: var(--muted); }
+  .info dd { margin: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; margin: 0 0 1.1rem; }
+  .tags li { font: 500 .85rem var(--head); border: 1px solid var(--line); border-radius: 6px; padding: .15rem .55rem; color: var(--muted); }
+  .info .links a { font: 700 1rem var(--head); }
+  @media (min-width: 760px) {
+    .project { grid-template-columns: 2fr 3fr; }
+    .project:nth-child(even) { grid-template-columns: 3fr 2fr; }
+    .project:nth-child(even) .thumb { order: 2; }
+    .thumb { min-height: 100%; }
+  }
+
+  .about { display: grid; gap: 2rem; }
+  @media (min-width: 760px) { .about { grid-template-columns: 3fr 2fr; gap: 3rem; } }
+  .about p { margin: 0 0 1rem; max-width: 36rem; }
+  .now { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem 1.5rem; align-self: start; }
+  .now h3 { font: 700 1.15rem var(--head); margin: 0 0 .75rem; }
+  .now ul { margin: 0; padding-left: 1.1rem; }
+  .now li { margin-bottom: .4rem; }
+
+  .contact { padding-bottom: 4rem; }
+  .email { font: 800 clamp(1.4rem, 4.5vw, 2.6rem) var(--head); letter-spacing: -0.02em; text-decoration-thickness: 3px; text-underline-offset: 6px; text-decoration-color: var(--accent); word-break: break-all; }
+  footer { border-top: 1px solid var(--line); padding: 1.5rem 0 2.5rem; color: var(--muted); font-size: .95rem; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <!-- Easter egg: clicking the name cycles the accent colour -->
+    <button class="logo" id="logo" aria-label="Change accent colour">Your Name<span>.</span></button>
+    <nav aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <!-- Say what you do in plain words. Delete anything that sounds like a LinkedIn headline. -->
+    <h1>I build [kind of thing] for [kind of people].</h1>
+    <p>I'm a [year] [major] student at [university]. I like [one specific thing you enjoy], and I'm looking for [internships / graduate roles] in [field].</p>
+    <div class="links">
+      <a class="btn primary" href="mailto:you@example.com">Email me</a>
+      <a class="btn" href="resume.pdf">Resume</a>
+      <a class="btn" href="https://github.com/yourname">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/yourname">LinkedIn</a>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <p class="sub">A mix of things I built for courses and things I built because I wanted to.</p>
+
+      <div class="projects">
+
+        <!-- Copy this whole <article> block for each project. Keep to 3-4. -->
+        <article class="project">
+          <div class="thumb">
+            <!-- Replace with: <img src="images/project1.jpg" alt="Describe the screenshot"> -->
+            Screenshot or demo GIF goes here
+          </div>
+          <div class="info">
+            <h3>Project name</h3>
+            <p class="kind">Passion project</p>
+            <p>One or two sentences: what it does and why you made it.</p>
+            <dl>
+              <dt>My role</dt><dd>Solo / what you personally built in a team.</dd>
+              <dt>Challenge</dt><dd>The hardest problem and how you solved it.</dd>
+              <dt>Result</dt><dd>A number, a user, a grade, or what you learned.</dd>
+            </dl>
+            <ul class="tags"><li>Python</li><li>React</li><li>PostgreSQL</li></ul>
+            <div class="links">
+              <a href="#">Live demo</a>
+              <a href="#">Source code</a>
+              <a href="#">Write-up</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb">Screenshot or demo GIF goes here</div>
+          <div class="info">
+            <h3>Course project name</h3>
+            <p class="kind">Course project · [Course code]</p>
+            <p>What the assignment asked for, and what you did beyond it.</p>
+            <dl>
+              <dt>My role</dt><dd>Team of 4, I owned the backend and testing.</dd>
+              <dt>Challenge</dt><dd>What went wrong and how you fixed it.</dd>
+              <dt>Result</dt><dd>Outcome or what you'd change next time.</dd>
+            </dl>
+            <ul class="tags"><li>Java</li><li>Docker</li></ul>
+            <div class="links"><a href="#">Source code</a></div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb">Screenshot or demo GIF goes here</div>
+          <div class="info">
+            <h3>Another project</h3>
+            <p class="kind">Passion project</p>
+            <p>Short summary.</p>
+            <dl>
+              <dt>My role</dt><dd>…</dd>
+              <dt>Challenge</dt><dd>…</dd>
+              <dt>Result</dt><dd>…</dd>
+            </dl>
+            <ul class="tags"><li>Tag</li><li>Tag</li></ul>
+            <div class="links"><a href="#">Source code</a></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2>About me</h2>
+        <!-- Write like you talk. Three short paragraphs is plenty. -->
+        <p>Who you are and what got you into this field, in a sentence or two.</p>
+        <p>What you care about when you build things, and what kind of team you work well in.</p>
+        <p>Outside of code: a hobby, a sport, a weird obsession. This is the part people remember.</p>
+      </div>
+      <aside class="now">
+        <h3>Right now</h3>
+        <ul>
+          <li>Learning: [a tool or topic]</li>
+          <li>Reading: [a book]</li>
+          <li>Listening to: [an album]</li>
+          <li>Looking for: [role type, location, start date]</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Get in touch</h2>
+      <p class="sub">The fastest way to reach me is email.</p>
+      <a class="email" href="mailto:you@example.com">you@example.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Your Name. Built by hand with HTML and CSS.</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Easter egg: click your name to try a new accent colour.
+  var accents = ['#0e8a8c', '#d6336c', '#5c4ee5', '#c77700', '#2f9e44'];
+  var i = 0;
+  document.getElementById('logo').addEventListener('click', function () {
+    i = (i + 1) % accents.length;
+    document.documentElement.style.setProperty('--accent', accents[i]);
+  });
+</script>
+</body>
+</html>
