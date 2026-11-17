@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cai Yijia – Portfolio</title>
-<meta name="description" content="Cai Yijia: student developer building [what you build].">
+<title>Your Name – Portfolio</title>
+<meta name="description" content="Your Name: student developer building [what you build].">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
     --text: #1a2638;
     --muted: #5b6878;
     --line: #d5dce3;
-    --accent: #0e8a8c;      /* click Cai Yijia in the header to cycle through alternates */
+    --accent: #0e8a8c;      /* click your name in the header to cycle through alternates */
     --accent-ink: #ffffff;
     --head: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
     --body: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -92,6 +92,18 @@
     .thumb { min-height: 100%; }
   }
 
+
+  .group { font: 700 1.5rem var(--head); margin: 2.5rem 0 1rem; padding-left: .75rem; border-left: 4px solid var(--accent); }
+  .group:first-of-type { margin-top: 0; }
+  .guitar { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: grid; }
+  .video { aspect-ratio: 16 / 9; background: repeating-linear-gradient(135deg, var(--bg), var(--bg) 12px, var(--line) 12px, var(--line) 13px); display: grid; place-items: center; color: var(--muted); font: 500 .95rem var(--head); text-align: center; padding: 1rem; }
+  .video iframe { width: 100%; height: 100%; border: 0; }
+  .guitar .info ul.pieces { margin: 0 0 1rem; padding-left: 1.1rem; }
+  .guitar .info ul.pieces li { margin-bottom: .3rem; }
+  @media (min-width: 760px) { .guitar { grid-template-columns: 3fr 2fr; } .video { aspect-ratio: auto; min-height: 15rem; } }
+  .soon { margin-top: 1.5rem; border: 2px dashed var(--line); border-radius: 14px; padding: 1.5rem; color: var(--muted); }
+  .soon strong { font: 700 1.15rem var(--head); color: var(--text); display: block; margin-bottom: .25rem; }
+
   .about { display: grid; gap: 2rem; }
   @media (min-width: 760px) { .about { grid-template-columns: 3fr 2fr; gap: 3rem; } }
   .about p { margin: 0 0 1rem; max-width: 36rem; }
@@ -112,9 +124,10 @@
 <header>
   <div class="wrap">
     <!-- Easter egg: clicking the name cycles the accent colour -->
-    <button class="logo" id="logo" aria-label="Change accent colour">Cai Yijia<span>.</span></button>
+    <button class="logo" id="logo" aria-label="Change accent colour">Your Name<span>.</span></button>
     <nav aria-label="Main">
-      <a href="#projects">Projects</a>
+      <a href="#passion">Passion projects</a>
+      <a href="#course">Course projects</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -127,49 +140,72 @@
     <h1>I build [kind of thing] for [kind of people].</h1>
     <p>I'm a [year] [major] student at [university]. I like [one specific thing you enjoy], and I'm looking for [internships / graduate roles] in [field].</p>
     <div class="links">
-      <a class="btn primary" href="mailto:caiyijiaa@gmail.com">Email me</a>
+      <a class="btn primary" href="mailto:you@example.com">Email me</a>
       <a class="btn" href="resume.pdf">Resume</a>
       <a class="btn" href="https://github.com/yourname">GitHub</a>
       <a class="btn" href="https://linkedin.com/in/yourname">LinkedIn</a>
     </div>
   </div>
 
-  <section id="projects">
+  <section id="passion">
     <div class="wrap">
-      <h2>Projects</h2>
-      <p class="sub">A mix of things I built for courses and things I built because I wanted to.</p>
+      <h2>Passion projects</h2>
+      <p class="sub">Things I made because I wanted to, not because anyone assigned them.</p>
 
+      <h3 class="group">Guitar</h3>
+      <div class="guitar">
+        <div class="video">
+          <!-- Replace this text with: <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Guitar video" allowfullscreen loading="lazy"></iframe> -->
+          Embed a YouTube video of you playing
+        </div>
+        <div class="info">
+          <h3 style="font:700 1.35rem/1.2 var(--head);margin:0 0 .5rem">Short title for your guitar work</h3>
+          <p>One or two sentences: how long you've played, your style, and what you're working on.</p>
+          <ul class="pieces">
+            <li>Piece or song you're proud of</li>
+            <li>Something you arranged or wrote yourself</li>
+            <li>What you're learning now</li>
+          </ul>
+          <div class="links"><a href="#">YouTube</a> <a href="#">Instagram</a></div>
+        </div>
+      </div>
+
+      <h3 class="group">Others</h3>
       <div class="projects">
-
-        <!-- Copy this whole <article> block for each project. Keep to 3-4. -->
+        <!-- Copy this <article> for each new passion project. -->
         <article class="project">
-          <div class="thumb">
-            <!-- Replace with: <img src="images/project1.jpg" alt="Describe the screenshot"> -->
-            Screenshot or demo GIF goes here
-          </div>
+          <div class="thumb">Screenshot or demo GIF goes here</div>
           <div class="info">
             <h3>Project name</h3>
             <p class="kind">Passion project</p>
             <p>One or two sentences: what it does and why you made it.</p>
             <dl>
-              <dt>My role</dt><dd>Solo / what you personally built in a team.</dd>
+              <dt>My role</dt><dd>Solo / what you personally built.</dd>
               <dt>Challenge</dt><dd>The hardest problem and how you solved it.</dd>
-              <dt>Result</dt><dd>A number, a user, a grade, or what you learned.</dd>
+              <dt>Result</dt><dd>A number, a user, or what you learned.</dd>
             </dl>
-            <ul class="tags"><li>Python</li><li>React</li><li>PostgreSQL</li></ul>
-            <div class="links">
-              <a href="#">Live demo</a>
-              <a href="#">Source code</a>
-              <a href="#">Write-up</a>
-            </div>
+            <ul class="tags"><li>Python</li><li>React</li></ul>
+            <div class="links"><a href="#">Live demo</a> <a href="#">Source code</a></div>
           </div>
         </article>
+      </div>
+      <div class="soon">
+        <strong>More on the way</strong>
+        I'm working on more projects and will add them here as they're ready.
+      </div>
+    </div>
+  </section>
 
+  <section id="course">
+    <div class="wrap">
+      <h2>Course projects</h2>
+      <p class="sub">Projects from my degree, including what I owned on each team.</p>
+      <div class="projects">
         <article class="project">
           <div class="thumb">Screenshot or demo GIF goes here</div>
           <div class="info">
             <h3>Course project name</h3>
-            <p class="kind">Course project · [Course code]</p>
+            <p class="kind">[Course code] · [Semester]</p>
             <p>What the assignment asked for, and what you did beyond it.</p>
             <dl>
               <dt>My role</dt><dd>Team of 4, I owned the backend and testing.</dd>
@@ -180,23 +216,6 @@
             <div class="links"><a href="#">Source code</a></div>
           </div>
         </article>
-
-        <article class="project">
-          <div class="thumb">Screenshot or demo GIF goes here</div>
-          <div class="info">
-            <h3>Another project</h3>
-            <p class="kind">Passion project</p>
-            <p>Short summary.</p>
-            <dl>
-              <dt>My role</dt><dd>…</dd>
-              <dt>Challenge</dt><dd>…</dd>
-              <dt>Result</dt><dd>…</dd>
-            </dl>
-            <ul class="tags"><li>Tag</li><li>Tag</li></ul>
-            <div class="links"><a href="#">Source code</a></div>
-          </div>
-        </article>
-
       </div>
     </div>
   </section>
@@ -226,19 +245,19 @@
     <div class="wrap">
       <h2>Get in touch</h2>
       <p class="sub">The fastest way to reach me is email.</p>
-      <a class="email" href="mailto:caiyijiaa@gmail.com">caiyijiaa@gmail.com</a>
+      <a class="email" href="mailto:you@example.com">you@example.com</a>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> Cai Yijia. Built by hand with HTML and CSS.</div>
+  <div class="wrap">© <span id="year"></span> Your Name. Built by hand with HTML and CSS.</div>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Easter egg: click Cai Yijia to try a new accent colour.
+  // Easter egg: click your name to try a new accent colour.
   var accents = ['#0e8a8c', '#d6336c', '#5c4ee5', '#c77700', '#2f9e44'];
   var i = 0;
   document.getElementById('logo').addEventListener('click', function () {
